@@ -11,6 +11,8 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+import java.util.Arrays;
+
 @Configuration
 @EnableWebSecurity
 @RequiredArgsConstructor
@@ -26,17 +28,17 @@ public class SecurityConfiguration {
                 csrf()//We desable csrf
                 .disable()
                 .authorizeRequests()// We define the white list (The urls that doesn't require to be secure)
-                .requestMatchers("/api/v1/auth/*")//All the methode that have this path
+                .requestMatchers("/api/v1/auth/*", "/swagger-ui/*", "/v3/api-docs/**")//All the methode that have this path
                 .permitAll()
                 .anyRequest() //All the others urls will need to be authenticated
                 .authenticated()
                 .and()
-                //Configure the session management (Consist to define the session to be as stateless, so each request will be authenticated)
+                //Configure the session management (Consist of define the session to be as stateless, so each request will be authenticated)
                 .sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .authenticationProvider(authenticationProvider)
-                .addFilterBefore(jwAuthFilter, UsernamePasswordAuthenticationFilter.class) ;//Add our filter
+                .addFilterBefore(jwAuthFilter, UsernamePasswordAuthenticationFilter.class);//Add our filter
 
 
         return http.build();

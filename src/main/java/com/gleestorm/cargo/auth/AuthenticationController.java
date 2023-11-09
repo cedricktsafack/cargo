@@ -1,31 +1,44 @@
 package com.gleestorm.cargo.auth;
 
 import com.gleestorm.cargo.auth.service.AuthenticationService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import static org.springframework.http.HttpStatus.CREATED;
 
 @RestController
 @RequestMapping("/api/v1/auth")
 @RequiredArgsConstructor
+@Tag(name = "Authentication", description = "API to create account and login")
 public class AuthenticationController {
 
     private final AuthenticationService service;
 
     @PostMapping("/register")
-    public ResponseEntity<AuthenticationResponse>register(
+    @Operation(summary = "Register user")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = " user registred Register user")
+    })
+    public ResponseEntity<AuthenticationResponse> register(
             @RequestBody RegisterRequest request
-    ){
+    ) {
         return ResponseEntity.ok(service.register(request));
     }
 
+    @Operation(summary = "Authenticate user")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = " user authenticated successfully"),
+            @ApiResponse(responseCode = "403", description = " UnAutorized. Authentication failed")
+    })
     @PostMapping("/authenticate")
-    public ResponseEntity<AuthenticationResponse>authenticate(
+    public ResponseEntity<AuthenticationResponse> authenticate(
             @RequestBody AuthenticationRequest request
-    ){
+    ) {
         return ResponseEntity.ok(service.authenticate(request));
     }
 }
