@@ -5,11 +5,9 @@ import com.gleestorm.cargo.auth.AuthenticationRequest;
 import com.gleestorm.cargo.auth.AuthenticationResponse;
 import com.gleestorm.cargo.auth.RegisterRequest;
 import com.gleestorm.cargo.config.JwtService;
-import com.gleestorm.cargo.user.Role;
 import com.gleestorm.cargo.user.User;
 import com.gleestorm.cargo.user.UserRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -31,7 +29,6 @@ public class AuthenticationService {
                 .lastname(request.getLastname())
                 .email(request.getEmail())
                 .password(passwordEncoder.encode(request.getPassword()))
-                .roles(Role.USER)
                 .build();
 
         repository.save(user);

@@ -27,7 +27,7 @@ public class SecurityConfiguration {
         http.
                 csrf()//We desable csrf
                 .disable()
-                .authorizeRequests()// We define the white list (The urls that doesn't require to be secure)
+                .authorizeHttpRequests()// We define the white list (The urls that doesn't require to be secure)
                 .requestMatchers("/api/v1/auth/*", "/swagger-ui/*", "/v3/api-docs/**")//All the methode that have this path
                 .permitAll()
                 .anyRequest() //All the others urls will need to be authenticated
