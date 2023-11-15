@@ -10,7 +10,5 @@ import lombok.NoArgsConstructor;
 @Data
 @Builder
 public class AddRoleRequest {
-    private Integer id;
-
     private String name;
 }
