@@ -1,7 +1,6 @@
-package com.gleestorm.cargo.user;
+package com.gleestorm.cargo.authentication.model;
 
 
-import com.gleestorm.cargo.userRole.Role;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

@@ -1,12 +1,10 @@
-package com.gleestorm.cargo.userRole;
+package com.gleestorm.cargo.authentication.controller;
 
-import com.gleestorm.cargo.auth.AuthenticationResponse;
-import com.gleestorm.cargo.auth.RegisterRequest;
-import com.gleestorm.cargo.user.dto.UserResponse;
-import com.gleestorm.cargo.userRole.dato.AddRoleRequest;
-import com.gleestorm.cargo.userRole.dato.AddRoleToUserRequest;
-import com.gleestorm.cargo.userRole.dato.RoleResponse;
-import com.gleestorm.cargo.userRole.service.RoleService;
+import com.gleestorm.cargo.authentication.dto.user.UserResponse;
+import com.gleestorm.cargo.authentication.dto.role.AddRoleRequest;
+import com.gleestorm.cargo.authentication.dto.role.AddRoleToUserRequest;
+import com.gleestorm.cargo.authentication.dto.role.RoleResponse;
+import com.gleestorm.cargo.authentication.service.RoleService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;

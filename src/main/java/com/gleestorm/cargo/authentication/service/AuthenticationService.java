@@ -1,12 +1,12 @@
-package com.gleestorm.cargo.auth.service;
+package com.gleestorm.cargo.authentication.service;
 
 
-import com.gleestorm.cargo.auth.AuthenticationRequest;
-import com.gleestorm.cargo.auth.AuthenticationResponse;
-import com.gleestorm.cargo.auth.RegisterRequest;
+import com.gleestorm.cargo.authentication.dto.AuthenticationRequest;
+import com.gleestorm.cargo.authentication.dto.AuthenticationResponse;
+import com.gleestorm.cargo.authentication.dto.RegisterRequest;
 import com.gleestorm.cargo.config.JwtService;
-import com.gleestorm.cargo.user.User;
-import com.gleestorm.cargo.user.UserRepository;
+import com.gleestorm.cargo.authentication.model.User;
+import com.gleestorm.cargo.authentication.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;

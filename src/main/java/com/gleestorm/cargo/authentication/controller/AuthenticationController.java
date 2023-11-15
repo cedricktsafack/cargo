@@ -1,6 +1,9 @@
-package com.gleestorm.cargo.auth;
+package com.gleestorm.cargo.authentication.controller;
 
-import com.gleestorm.cargo.auth.service.AuthenticationService;
+import com.gleestorm.cargo.authentication.dto.AuthenticationRequest;
+import com.gleestorm.cargo.authentication.dto.AuthenticationResponse;
+import com.gleestorm.cargo.authentication.dto.RegisterRequest;
+import com.gleestorm.cargo.authentication.service.AuthenticationService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
@@ -8,8 +11,6 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import static org.springframework.http.HttpStatus.CREATED;
 
 @RestController
 @RequestMapping("/api/v1/auth")

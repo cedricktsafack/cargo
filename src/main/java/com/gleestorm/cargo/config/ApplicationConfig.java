@@ -1,7 +1,7 @@
 package com.gleestorm.cargo.config;
 
 
-import com.gleestorm.cargo.user.UserRepository;
+import com.gleestorm.cargo.authentication.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

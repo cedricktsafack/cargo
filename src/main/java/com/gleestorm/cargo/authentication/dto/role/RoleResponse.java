@@ -1,4 +1,4 @@
-package com.gleestorm.cargo.userRole.dato;
+package com.gleestorm.cargo.authentication.dto.role;
 
 
 import lombok.AllArgsConstructor;
@@ -10,7 +10,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Data
 @Builder
-public class AddRoleToUserRequest {
-    private String email;
-    private Integer roleId;
+public class RoleResponse {
+    private Integer id;
+
+    private String name;
 }

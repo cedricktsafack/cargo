@@ -1,4 +1,4 @@
-package com.gleestorm.cargo.auth;
+package com.gleestorm.cargo.authentication.dto;
 
 
 import lombok.AllArgsConstructor;

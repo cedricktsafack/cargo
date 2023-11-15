@@ -1,6 +1,6 @@
-package com.gleestorm.cargo.user.dto;
+package com.gleestorm.cargo.authentication.dto.user;
 
-import com.gleestorm.cargo.userRole.Role;
+import com.gleestorm.cargo.authentication.model.Role;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

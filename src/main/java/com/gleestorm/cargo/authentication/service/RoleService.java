@@ -1,15 +1,14 @@
-package com.gleestorm.cargo.userRole.service;
+package com.gleestorm.cargo.authentication.service;
 
 
-import com.gleestorm.cargo.user.UserRepository;
-import com.gleestorm.cargo.user.dto.UserResponse;
-import com.gleestorm.cargo.userRole.Role;
-import com.gleestorm.cargo.userRole.RoleRepository;
-import com.gleestorm.cargo.userRole.dato.AddRoleRequest;
-import com.gleestorm.cargo.userRole.dato.AddRoleToUserRequest;
-import com.gleestorm.cargo.userRole.dato.RoleResponse;
+import com.gleestorm.cargo.authentication.repository.UserRepository;
+import com.gleestorm.cargo.authentication.dto.user.UserResponse;
+import com.gleestorm.cargo.authentication.model.Role;
+import com.gleestorm.cargo.authentication.repository.RoleRepository;
+import com.gleestorm.cargo.authentication.dto.role.AddRoleRequest;
+import com.gleestorm.cargo.authentication.dto.role.AddRoleToUserRequest;
+import com.gleestorm.cargo.authentication.dto.role.RoleResponse;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;
