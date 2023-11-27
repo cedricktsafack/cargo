@@ -4,6 +4,7 @@ import com.gleestorm.cargo.authentication.dto.AuthenticationRequest;
 import com.gleestorm.cargo.authentication.dto.AuthenticationResponse;
 import com.gleestorm.cargo.authentication.dto.RegisterRequest;
 import com.gleestorm.cargo.authentication.service.AuthenticationService;
+import com.gleestorm.cargo.exceptions.UserNotFoundException;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
@@ -37,9 +38,9 @@ public class AuthenticationController {
             @ApiResponse(responseCode = "403", description = " UnAutorized. Authentication failed")
     })
     @PostMapping("/authenticate")
-    public ResponseEntity<AuthenticationResponse> authenticate(
+    public ResponseEntity<AuthenticationResponse> authenticate (
             @RequestBody AuthenticationRequest request
-    ) {
+    ) throws UserNotFoundException {
         return ResponseEntity.ok(service.authenticate(request));
     }
 }

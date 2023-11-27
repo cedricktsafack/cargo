@@ -7,9 +7,11 @@ import com.gleestorm.cargo.authentication.dto.RegisterRequest;
 import com.gleestorm.cargo.config.JwtService;
 import com.gleestorm.cargo.authentication.model.User;
 import com.gleestorm.cargo.authentication.repository.UserRepository;
+import com.gleestorm.cargo.exceptions.UserNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -38,7 +40,7 @@ public class AuthenticationService {
         return AuthenticationResponse.builder().token(jwtToken).build();
     }
 
-    public AuthenticationResponse authenticate(AuthenticationRequest request) {
+    public AuthenticationResponse authenticate(AuthenticationRequest request) throws UserNotFoundException {
 
         authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
@@ -48,9 +50,13 @@ public class AuthenticationService {
         );
 
         //If the authentication succeed, we generate and return the token
-        var user = repository.findByEmail(request.getEmail()).orElseThrow();
+        var user = repository.findByEmail(request.getEmail());
 
-        var jwtToken = jwtService.generateToken(user);
+        if (user.isEmpty()) {
+            throw new UserNotFoundException("Cannot found the user: " + request.getEmail());
+        }
+
+        var jwtToken = jwtService.generateToken(user.get());
 
         return AuthenticationResponse.builder()
                 .token(jwtToken)

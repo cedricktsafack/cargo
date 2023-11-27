@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api/v1/verify-controller")
 @PreAuthorize("hasAuthority('ROLE_USER')")
-
 public class VerifySecurityController {
 
 

@@ -8,6 +8,8 @@ import com.gleestorm.cargo.authentication.repository.RoleRepository;
 import com.gleestorm.cargo.authentication.dto.role.AddRoleRequest;
 import com.gleestorm.cargo.authentication.dto.role.AddRoleToUserRequest;
 import com.gleestorm.cargo.authentication.dto.role.RoleResponse;
+import com.gleestorm.cargo.exceptions.UserNotFoundException;
+import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -39,13 +41,21 @@ public class RoleService {
         return responses.collect(Collectors.toSet());
     }
 
-    public UserResponse addRoleToUser(AddRoleToUserRequest request){
+    public UserResponse addRoleToUser(AddRoleToUserRequest request) throws UserNotFoundException {
 
-        var user =userRepository.findByEmail(request.getEmail()).orElseThrow();
-        var role = roleRepository.findById(request.getRoleId()).orElseThrow();
-        user.getRoles().add(role);
+        var userFind =userRepository.findByEmail(request.getEmail());
 
-        var updatedUser = userRepository.save(user);
+        if (userFind.isEmpty()) {
+            throw new UserNotFoundException("Cannot found the user: " + request.getEmail());
+        }
+        var roleFind = roleRepository.findById(request.getRoleId());
+        if (roleFind.isEmpty()) {
+            throw new EntityNotFoundException("Cannot found the role: " + request.getRoleId());
+        }
+
+        userFind.get().getRoles().add(roleFind.get());
+
+        var updatedUser = userRepository.save(userFind.get());
 
         return UserResponse
                 .builder()
