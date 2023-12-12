@@ -1,6 +1,7 @@
 package com.gleestorm.cargo.authentication.dto.user;
 
 import com.gleestorm.cargo.authentication.model.Role;
+import com.gleestorm.cargo.core.base.BaseEntity;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -13,9 +14,9 @@ import java.util.Set;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserResponse {
+public class UserResponse extends BaseEntity {
 
-    private Integer id;
+    private String id;
 
     private String firstname;
 

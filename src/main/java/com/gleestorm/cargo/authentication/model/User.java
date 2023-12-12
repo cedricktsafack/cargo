@@ -1,6 +1,8 @@
 package com.gleestorm.cargo.authentication.model;
 
 
+import com.gleestorm.cargo.colis.model.Package;
+import com.gleestorm.cargo.core.base.BaseEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -18,12 +20,7 @@ import java.util.*;
 @AllArgsConstructor
 @Entity
 @Table(name = "_USER")
-public class User implements UserDetails {
-
-    @Id
-    @GeneratedValue
-    @Column(name = "user_id")
-    private Integer id;
+public class User extends BaseEntity implements UserDetails {
 
     private String firstname;
 
@@ -33,6 +30,16 @@ public class User implements UserDetails {
     private String phoneNumber;
 
     private String password;
+
+    @OneToMany(mappedBy = "owner")
+    private List<Package> packageList;
+
+    @OneToMany(mappedBy = "createdBy")
+    private List<Package> createdPackages;
+
+    @OneToMany(mappedBy = "updatedBy")
+    private List<Package> updatedPackages;
+
 
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(
