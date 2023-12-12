@@ -17,5 +17,5 @@ public class AddRoleToUserRequest {
     private String email;
 
     @NotNull(message = "The role ID is required")
-    private Integer roleId;
+    private String roleId;
 }

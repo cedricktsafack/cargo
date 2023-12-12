@@ -1,4 +1,4 @@
-package com.gleestorm.cargo.core.base;
+package com.gleestorm.cargo.core.base.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
@@ -27,5 +27,11 @@ public abstract class BaseEntity {
 
     @Version
     private Integer version;
+
+    @Column(name = "_isArchived")
+    private boolean isArchived = false;
+
+    @Column(name = "_isDeleted")
+    private boolean isDeleted = false;
 
 }

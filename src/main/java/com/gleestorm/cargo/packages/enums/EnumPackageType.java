@@ -1,4 +1,4 @@
-package com.gleestorm.cargo.colis.enums;
+package com.gleestorm.cargo.packages.enums;
 
 public enum EnumPackageType {
     ORDINAIRE, BATTERY

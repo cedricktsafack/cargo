@@ -1,34 +1,35 @@
-package com.gleestorm.cargo.colis.model;
-
+package com.gleestorm.cargo.packages.dto;
 
 import com.gleestorm.cargo.authentication.model.User;
-import com.gleestorm.cargo.colis.enums.EnumPackageType;
-import com.gleestorm.cargo.colis.enums.EnumStatePackage;
-import com.gleestorm.cargo.core.base.BaseEntity;
-import jakarta.persistence.*;
-import lombok.*;
+import com.gleestorm.cargo.packages.enums.EnumPackageType;
+import com.gleestorm.cargo.packages.enums.EnumStatePackage;
+import com.gleestorm.cargo.packages.model.PackageGroup;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import lombok.Data;
 
 import java.time.Instant;
 
-@EqualsAndHashCode(callSuper = true)
-@Entity(name = "PACKAGE")
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder
-public class Package extends BaseEntity {
+public class CreatePackageRequest {
     private String name;
+
+   private String  clientId;
+
     private String senderPhone;
+
+
+    private String receiverName;
+    private String receiverPhone;
+
     private String description;
     private Double weight;
     private String depatureCountry;
     private String targetCountry;
     private String departureCity;
     private String targetCity;
-    @Enumerated(EnumType.STRING)
     private EnumPackageType type;
-    @Enumerated(EnumType.STRING)
-    private EnumStatePackage status;
+    private EnumStatePackage status = EnumStatePackage.NEW;
     private String groupID;
     private Instant sendAt;
     private Instant arrivedCountryDate;
@@ -36,15 +37,12 @@ public class Package extends BaseEntity {
     private String photoURL;
     private Double pricePerDay;
     private Double pricePerWeight;
-    private String receiverName;
-    private String receiverPhone;
+
 
     @ManyToOne
     @JoinColumn(name = "group_id")
     private PackageGroup group;
-    @ManyToOne
-    @JoinColumn(name = "owner_id")
-    private User owner;
+
 
     @ManyToOne
     @JoinColumn(name = "created_by_id")
@@ -55,4 +53,5 @@ public class Package extends BaseEntity {
     private User updatedBy;
     private String additionnalInfos;
     private Instant removedAt;
+
 }

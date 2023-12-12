@@ -1,6 +1,6 @@
 package com.gleestorm.cargo.authentication.model;
 
-import com.gleestorm.cargo.core.base.BaseEntity;
+import com.gleestorm.cargo.core.base.entity.BaseEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

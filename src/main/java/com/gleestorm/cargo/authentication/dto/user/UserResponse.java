@@ -1,7 +1,7 @@
 package com.gleestorm.cargo.authentication.dto.user;
 
 import com.gleestorm.cargo.authentication.model.Role;
-import com.gleestorm.cargo.core.base.BaseEntity;
+import com.gleestorm.cargo.core.base.entity.BaseEntity;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

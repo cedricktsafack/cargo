@@ -1,8 +1,8 @@
 package com.gleestorm.cargo.authentication.model;
 
 
-import com.gleestorm.cargo.colis.model.Package;
-import com.gleestorm.cargo.core.base.BaseEntity;
+import com.gleestorm.cargo.packages.model.Package;
+import com.gleestorm.cargo.core.base.entity.BaseEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -26,6 +26,7 @@ public class User extends BaseEntity implements UserDetails {
 
     private String lastname;
 
+    @Column(unique = true)
     private String email;
     private String phoneNumber;
 
